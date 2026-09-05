@@ -1,0 +1,179 @@
+---
+/**
+ * Projects Section – showcases upcoming projects as horizontal cards with gradient borders.
+ * Minimalist dark theme, secondary (azul) & primary (morado) gradient styling.
+ * Ships zero JS (pure Astro component).
+ */
+
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  status: string;
+  category: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "Barber Appointment",
+    category: "Booking & Management System",
+    description:
+      "A modern, streamlined booking platform for barbershops. Clients can explore services, choose their preferred specialist, view available timeslots, and secure appointments in real-time with instant notifications.",
+    tags: ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "REST API"],
+    status: "In Development",
+  },
+  {
+    title: "Professional Dashboard",
+    category: "Analytics & Management Tool",
+    description:
+      "A comprehensive performance and management dashboard for businesses. Features real-time KPI tracking, advanced visual analytics, customizable widgets, and financial and operational metrics monitoring.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS", "Chart.js"],
+    status: "In Development",
+  },
+];
+---
+
+<section id="projects" class="relative py-28 overflow-hidden">
+  <!-- Background glow -->
+  <div class="pointer-events-none absolute inset-0">
+    <div
+      class="absolute top-1/3 -left-40 h-137.5 w-[550px] rounded-full bg-secondary/5 blur-[160px]"
+    >
+    </div>
+    <div
+      class="absolute bottom-10 -right-40 h-[550px] w-[550px] rounded-full bg-primary/5 blur-[160px]"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-6">
+    <!-- Section header -->
+    <div class="mb-16">
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-widest text-secondary-light"
+      >
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-secondary"></span>
+        Projects
+      </span>
+
+      <div
+        class="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
+      >
+        <div>
+          <h2 class="text-5xl font-extrabold tracking-tight sm:text-6xl">
+            Featured<br />
+            <span
+              class="bg-gradient-to-r from-secondary via-primary to-tertiary bg-clip-text text-transparent"
+            >
+              Work
+            </span>
+          </h2>
+          <p class="mt-4 text-xl font-medium text-text-muted">
+            Things I'm building
+          </p>
+        </div>
+
+        <p
+          class="font-mono text-sm text-text-muted/60 uppercase tracking-widest"
+        >
+          Coming soon
+        </p>
+      </div>
+
+      <div
+        class="mt-6 h-px w-24 bg-gradient-to-r from-secondary to-transparent"
+      >
+      </div>
+    </div>
+
+    <!-- Cards container: Horizontal layout -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      {
+        projects.map((project) => (
+          <div class="group relative rounded-3xl p-[1.5px] bg-gradient-to-br from-secondary/40 via-primary/30 to-secondary/10 transition-all duration-300 hover:from-secondary hover:via-primary hover:to-secondary hover:shadow-2xl hover:shadow-primary/20">
+            {/* Card inner */}
+            <article class="flex h-full min-h-[340px] flex-col justify-between rounded-[22px] bg-surface/90 p-8 sm:p-10 backdrop-blur-sm transition-all group-hover:bg-surface/95">
+              <div>
+                {/* Header info */}
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <span class="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-secondary-light">
+                    <span class="inline-block h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" />
+                    {project.status}
+                  </span>
+
+                  <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-light/60 text-text-muted transition-all group-hover:border-primary/50 group-hover:text-primary-light group-hover:scale-105">
+                    <svg
+                      class="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <p class="font-mono text-xs uppercase tracking-wider text-primary-light/80 mb-2">
+                  {project.category}
+                </p>
+
+                {/* Title */}
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl text-text group-hover:text-white transition-colors">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p class="mt-4 text-base leading-relaxed text-text-muted">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Bottom content: Tags & status note */}
+              <div class="mt-8 pt-6 border-t border-border/60">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span class="rounded-lg border border-border/80 bg-background/80 px-3 py-1 font-mono text-xs text-text-muted transition-colors group-hover:border-primary/30">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="flex items-center gap-2 text-text-muted/50">
+                  <svg
+                    class="h-4 w-4 text-secondary-light/70"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span class="font-mono text-xs">
+                    Details & demo coming soon
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Bottom separator line -->
+  <div class="mx-auto mt-28 max-w-7xl px-6">
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-border to-transparent"
+    >
+    </div>
+  </div>
+</section>

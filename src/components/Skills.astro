@@ -1,0 +1,274 @@
+---
+/**
+ * Skills Section – Highlights core engineering capabilities and technical stack.
+ * Dark minimalist aesthetic, responsive 3-column grid & tech badge grid with inline SVGs.
+ * Pure Astro component with zero unnecessary runtime JS.
+ */
+
+interface Capability {
+  title: string;
+  subtitle: string;
+  description: string;
+  accent: "secondary" | "primary" | "tertiary";
+  iconSvg: string;
+  points: string[];
+}
+
+interface TechItem {
+  name: string;
+  category: "Frontend" | "Backend" | "Database" | "Tools";
+  svg: string;
+}
+
+const capabilities: Capability[] = [
+  {
+    title: "Product UI",
+    subtitle: "Frontend & Experience",
+    description:
+      "Designing intuitive, fluid interfaces with strong attention to micro-interactions, accessibility, layout geometry, and responsive behavior across all viewports.",
+    accent: "secondary",
+    points: [
+      "Design Systems & Components",
+      "Micro-interactions & Animations",
+      "Mobile-first Architecture",
+    ],
+    iconSvg: `<svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3m6 6h6" /></svg>`,
+  },
+  {
+    title: "AI Workflows",
+    subtitle: "LLMs & Modern Tooling",
+    description:
+      "Incorporating Large Language Models, structured prompt engineering, and intelligent automation into practical developer workflows and user applications.",
+    accent: "tertiary",
+    points: [
+      "LLM & API Integrations",
+      "Prompt Engineering & Context Design",
+      "Agentic & AI-assisted Tooling",
+    ],
+    iconSvg: `<svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" /></svg>`,
+  },
+  {
+    title: "Backend Development",
+    subtitle: "APIs & Data Layers",
+    description:
+      "Engineering robust server architectures, typed REST APIs, relational database schemas, and optimized business logic built for reliability and maintainability.",
+    accent: "primary",
+    points: [
+      "RESTful API Architecture",
+      "Relational Schemas & Migrations",
+      "Performance & Auth Controls",
+    ],
+    iconSvg: `<svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>`,
+  },
+];
+
+const techStack: TechItem[] = [
+  {
+    name: "React",
+    category: "Frontend",
+    svg: `<svg class="h-5 w-5" viewBox="-11.5 -10.23174 23 20.46348" fill="currentColor"><circle cx="0" cy="0" r="2.05" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>`,
+  },
+  {
+    name: "Next.js",
+    category: "Frontend",
+    svg: `<svg class="h-5 w-5" viewBox="0 0 180 180" fill="none"><mask id="next-mask" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180"><circle cx="90" cy="90" r="90" fill="black"/></mask><g mask="url(#next-mask)"><circle cx="90" cy="90" r="90" fill="white" fill-opacity="0.1"/><circle cx="90" cy="90" r="88" stroke="currentColor" stroke-width="4"/><path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z" fill="currentColor"/><rect x="115" y="54" width="12" height="72" fill="currentColor"/></g></svg>`,
+  },
+  {
+    name: "TypeScript",
+    category: "Frontend",
+    svg: `<svg class="h-5 w-5 text-secondary-light" viewBox="0 0 24 24" fill="currentColor"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm14.12 10.375h2.895v1.854h-2.895v5.771h-2.072v-5.771H10.33V10.375h4.915zm-8.82 2.895c.29-.484.71-.856 1.258-1.114.549-.258 1.162-.387 1.838-.387.646 0 1.226.113 1.742.339.516.226.935.548 1.258.968.322.42.532.919.629 1.499.097.581.048 1.21-.145 1.887-.193.677-.532 1.258-1.016 1.742-.484.484-1.113.823-1.887 1.016-.774.194-1.661.161-2.661-.097v-1.935c.742.226 1.403.274 1.984.145.58-.129 1.016-.387 1.306-.774.29-.387.403-.855.339-1.403-.065-.548-.274-.984-.629-1.306-.355-.323-.839-.484-1.452-.484-.516 0-.968.08-1.355.242-.387.161-.677.371-.871.629l-1.097-.839z"/></svg>`,
+  },
+  {
+    name: "Tailwind CSS",
+    category: "Frontend",
+    svg: `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="#38bdf8"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/></svg>`,
+  },
+  {
+    name: "Astro",
+    category: "Frontend",
+    svg: `<svg class="h-5 w-5 text-tertiary-light" viewBox="0 0 24 24" fill="currentColor"><path d="M8.358 20.162c-1.15-1.07-1.457-2.662-.835-4.035l.088-.186c.07-.15.18-.328.32-.488.24-.27.53-.48.86-.62.33-.14.68-.2 1.03-.17.35.03.68.14.96.34.28.2.5.47.64.79.15.32.2.67.17 1.02-.03.35-.15.68-.35.96-.2.28-.47.5-.79.64-.32.15-.67.2-1.02.17a2.76 2.76 0 01-.84-.3l-.22.882c1.78 1.48 4.26 1.48 6.04 0l-.23-.882a2.76 2.76 0 01-.84.3c-.35.03-.7-.02-1.02-.17a2.53 2.53 0 01-.79-.64 2.53 2.53 0 01-.35-.96 2.47 2.47 0 01.17-1.02c.14-.32.36-.59.64-.79.28-.2.61-.31.96-.34.35-.03.7.03 1.03.17.33.14.62.35.86.62.14.16.25.338.32.488l.088.186c.622 1.373.315 2.965-.835 4.035C16.928 17.5 19.5 13 19.5 8.5a7.5 7.5 0 10-15 0c0 4.5 2.572 9 3.858 11.662z"/></svg>`,
+  },
+  {
+    name: "Node.js",
+    category: "Backend",
+    svg: `<svg class="h-5 w-5 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9.5 5.5v11L12 24l-9.5-5.5v-11L12 2zm0 2.311L4.5 8.65v8.7l7.5 4.339 7.5-4.339v-8.7L12 4.311z"/></svg>`,
+  },
+  {
+    name: "Express",
+    category: "Backend",
+    svg: `<svg class="h-5 w-5 text-text-muted" viewBox="0 0 24 24" fill="currentColor"><path d="M11.996 0a12 12 0 1 0 12 12 12 12 0 0 0-12-12zm-1.8 17.47h-2.1v-6.93h2.1zm4.8 0h-2.1v-9.6h2.1zm3.9 0h-2.1v-4.8h2.1z"/></svg>`,
+  },
+  {
+    name: "PostgreSQL",
+    category: "Database",
+    svg: `<svg class="h-5 w-5 text-secondary" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16.93c-3.96-.48-7-3.86-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v.93zm5.9-3.24A7.95 7.95 0 0113 19.9v-2.9c0-.55-.45-1-1-1h-2v-2h4c.55 0 1-.45 1-1v-1.5l4.9 2.16z"/></svg>`,
+  },
+  {
+    name: "Prisma",
+    category: "Database",
+    svg: `<svg class="h-5 w-5 text-primary-light" viewBox="0 0 24 24" fill="currentColor"><path d="M21.72 19.34L13.1 2.9a1.27 1.27 0 00-2.22 0L2.27 19.34a1.28 1.28 0 001.11 1.86h17.23a1.28 1.28 0 001.11-1.86zM12 6.22l5.88 11.23H6.12L12 6.22z"/></svg>`,
+  },
+  {
+    name: "Git",
+    category: "Tools",
+    svg: `<svg class="h-5 w-5 text-orange-400" viewBox="0 0 24 24" fill="currentColor"><path d="M2.59 13.41L10.59 21.41a2 2 0 002.83 0l8-8a2 2 0 000-2.83l-8-8a2 2 0 00-2.83 0l-8 8a2 2 0 000 2.83zm13.11-1.41a2 2 0 11-2-2 2 2 0 012 2zm-5 5a2 2 0 11-2-2 2 2 0 012 2zm0-8a2 2 0 11-2-2 2 2 0 012 2z"/></svg>`,
+  },
+];
+---
+
+<section id="skills" class="relative py-28 overflow-hidden">
+  <!-- Ambient background glow matching palette -->
+  <div class="pointer-events-none absolute inset-0">
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[160px]"
+    >
+    </div>
+    <div
+      class="absolute -top-32 right-10 h-[400px] w-[400px] rounded-full bg-secondary/5 blur-[140px]"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-7xl px-6">
+    <!-- Section Header aligned with Hero & Projects -->
+    <div class="mb-16">
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-widest text-primary-light"
+      >
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span>
+        Skills &amp; Expertise
+      </span>
+
+      <div
+        class="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
+      >
+        <div>
+          <h2 class="text-5xl font-extrabold tracking-tight sm:text-6xl">
+            Core<br />
+            <span
+              class="bg-gradient-to-r from-secondary via-primary to-tertiary bg-clip-text text-transparent"
+            >
+              Capabilities
+            </span>
+          </h2>
+          <p class="mt-4 text-xl font-medium text-text-muted">
+            Software engineering &amp; modern product craft
+          </p>
+        </div>
+
+        <p
+          class="font-mono text-sm text-text-muted/60 uppercase tracking-widest"
+        >
+          Stack &amp; Strengths
+        </p>
+      </div>
+
+      <div class="mt-6 h-px w-24 bg-gradient-to-r from-primary to-transparent">
+      </div>
+    </div>
+
+    <!-- PART 1: Core Capabilities (Responsive 3-Column Grid) -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-20">
+      {
+        capabilities.map((cap) => (
+          <div class="group relative rounded-3xl p-[1.5px] bg-gradient-to-br from-border via-border/50 to-border/20 transition-all duration-300 hover:from-secondary/50 hover:via-primary/50 hover:to-tertiary/40 hover:shadow-xl hover:shadow-primary/10">
+            <div class="flex h-full flex-col justify-between rounded-[22px] bg-surface/90 p-8 backdrop-blur-sm transition-all group-hover:bg-surface/95">
+              <div>
+                {/* Top icon and badge */}
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-surface-light text-primary-light transition-all group-hover:border-primary/40 group-hover:text-white group-hover:scale-105"
+                    set:html={cap.iconSvg}
+                  />
+                  <span class="font-mono text-[11px] font-semibold uppercase tracking-wider text-text-muted/70">
+                    {cap.subtitle}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 class="text-2xl font-bold tracking-tight text-text group-hover:text-white transition-colors">
+                  {cap.title}
+                </h3>
+
+                {/* Description */}
+                <p class="mt-3 text-sm leading-relaxed text-text-muted">
+                  {cap.description}
+                </p>
+              </div>
+
+              {/* Bullet points */}
+              <div class="mt-8 pt-6 border-t border-border/60">
+                <ul class="flex flex-col gap-2.5">
+                  {cap.points.map((point) => (
+                    <li class="flex items-center gap-2.5 text-xs text-text-muted">
+                      <span class="h-1 w-1 rounded-full bg-primary-light" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- PART 2: Technologies & Stack -->
+    <div
+      class="rounded-3xl border border-border bg-surface/40 p-8 sm:p-12 backdrop-blur-sm"
+    >
+      <div
+        class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8"
+      >
+        <div>
+          <span
+            class="font-mono text-xs font-semibold uppercase tracking-widest text-secondary-light"
+          >
+            Technologies &amp; Frameworks
+          </span>
+          <h3
+            class="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-text"
+          >
+            My Daily Stack
+          </h3>
+        </div>
+        <p class="text-sm text-text-muted max-w-sm">
+          Battle-tested libraries, runtimes, and datastores powering scalable
+          full-stack applications.
+        </p>
+      </div>
+
+      {/* Grid of Tech Badges with SVG Icons */}
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      >
+        {
+          techStack.map((tech) => (
+            <div class="group flex items-center gap-3.5 rounded-xl border border-border/80 bg-surface-light/40 px-4 py-3 transition-all duration-200 hover:border-primary/40 hover:bg-surface-light hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5">
+              <div
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-background/80 border border-border/60 text-text transition-transform group-hover:scale-110"
+                set:html={tech.svg}
+              />
+              <div class="flex flex-col overflow-hidden">
+                <span class="text-sm font-semibold text-text truncate group-hover:text-white transition-colors">
+                  {tech.name}
+                </span>
+                <span class="font-mono text-[10px] text-text-muted/70 tracking-wider uppercase truncate">
+                  {tech.category}
+                </span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom separator line -->
+  <div class="mx-auto mt-28 max-w-7xl px-6">
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-border to-transparent"
+    >
+    </div>
+  </div>
+</section>

@@ -1,0 +1,141 @@
+---
+/**
+ * About Section – two-column layout: name/title on the left, bio on the right.
+ * No photo. Minimalist dark theme with the same color palette.
+ * Ships zero JS (pure Astro component).
+ */
+---
+
+<section id="about" class="relative py-28 overflow-hidden">
+  <!-- Background glow -->
+  <div class="pointer-events-none absolute inset-0">
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[150px]"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-6">
+    <!-- Two-column layout -->
+    <div class="flex flex-col gap-16 lg:flex-row lg:items-start lg:gap-24">
+      <!-- Left Column – Name & Title -->
+      <div class="lg:w-2/5">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-widest text-primary-light"
+        >
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary"></span>
+          About Me
+        </span>
+
+        <h2 class="mt-6 text-5xl font-extrabold tracking-tight sm:text-6xl">
+          Franklin<br />
+          <span
+            class="bg-gradient-to-r from-secondary via-primary to-tertiary bg-clip-text text-transparent"
+          >
+            Ferrer
+          </span>
+        </h2>
+
+        <p class="mt-4 text-xl font-medium text-text-muted">
+          Full Stack Developer
+        </p>
+
+        <p
+          class="mt-6 font-mono text-sm text-text-muted/60 uppercase tracking-widest"
+        >
+          What I build
+        </p>
+
+        <!-- Decorative line -->
+        <div
+          class="mt-6 h-px w-16 bg-gradient-to-r from-primary to-transparent"
+        >
+        </div>
+      </div>
+
+      <!-- Right Column – Bio & Details -->
+      <div class="flex-1 max-w-xl">
+        <h3 class="text-2xl font-bold leading-snug">
+          A passionate developer building the
+          <span class="text-primary-light">future of the web</span>
+        </h3>
+
+        <p class="mt-5 text-text-muted leading-relaxed">
+          I'm a Full Stack Software Engineer based in the Dominican Republic. I
+          specialize in crafting fast, accessible, and beautiful web experiences
+          using modern technologies like React, TypeScript, and Node.js.
+        </p>
+
+        <p class="mt-4 text-text-muted leading-relaxed">
+          I believe great software is a blend of clean code, thoughtful design,
+          and relentless attention to detail. When I'm not coding, you'll find
+          me exploring new technologies, contributing to open source, or sharing
+          knowledge with the dev community.
+        </p>
+
+        <!-- Highlight stats -->
+        <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div
+            class="rounded-xl border border-border bg-surface/50 p-4 text-center transition-colors hover:border-primary/30"
+          >
+            <span class="block text-2xl font-bold text-secondary">5+</span>
+            <span class="mt-1 block text-xs font-medium text-text-muted"
+              >Projects Completed</span
+            >
+          </div>
+          <div
+            class="rounded-xl border border-border bg-surface/50 p-4 text-center transition-colors hover:border-primary/30"
+          >
+            <span class="block text-2xl font-bold text-primary">2+</span>
+            <span class="mt-1 block text-xs font-medium text-text-muted"
+              >Years Experience</span
+            >
+          </div>
+          <div
+            class="rounded-xl border border-border bg-surface/50 p-4 text-center transition-colors hover:border-primary/30"
+          >
+            <span class="block text-2xl font-bold text-tertiary">5+</span>
+            <span class="mt-1 block text-xs font-medium text-text-muted"
+              >Happy Clients</span
+            >
+          </div>
+        </div>
+
+        <!-- Tech stack pills -->
+        <div class="mt-8">
+          <p
+            class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-text-muted"
+          >
+            Tech I love
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {
+              [
+                "React",
+                "TypeScript",
+                "Node.js",
+                "Next.js",
+                "Astro",
+                "Tailwind CSS",
+                "PostgreSQL",
+                "Docker",
+              ].map((tech) => (
+                <span class="rounded-lg border border-border bg-surface px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:border-primary/40 hover:text-primary-light">
+                  {tech}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom separator line -->
+  <div class="mx-auto mt-28 max-w-7xl px-6">
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-border to-transparent"
+    >
+    </div>
+  </div>
+</section>
