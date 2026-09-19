@@ -1,0 +1,115 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Message Sent | Franklin Ferrer"
+  description="Thank you for reaching out. Your message has been sent successfully."
+>
+  <section
+    class="relative min-h-[85vh] flex items-center justify-center overflow-hidden px-6 py-24"
+  >
+    <!-- Ambient glowing backgrounds matching palette -->
+    <div class="pointer-events-none absolute inset-0">
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-secondary/10 blur-[150px]"
+      >
+      </div>
+      <div
+        class="absolute -top-32 right-1/4 h-[350px] w-[350px] rounded-full bg-primary/10 blur-[130px]"
+      >
+      </div>
+    </div>
+
+    <!-- Centered Card -->
+    <div class="relative w-full max-w-lg">
+      <div
+        class="group relative rounded-3xl p-[1.5px] bg-gradient-to-br from-secondary/40 via-primary/30 to-secondary/10 shadow-2xl shadow-primary/10"
+      >
+        <div
+          class="rounded-[22px] bg-surface/90 p-8 sm:p-12 text-center backdrop-blur-md"
+        >
+          <!-- Animated success checkmark icon -->
+          <div
+            class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-secondary/30 bg-secondary/10 text-secondary-light"
+          >
+            <svg
+              class="h-8 w-8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12.75l6 6 9-13.5"></path>
+            </svg>
+          </div>
+
+          <!-- Status badge -->
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-widest text-secondary-light"
+          >
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-secondary animate-pulse"
+            ></span>
+            Message Sent Successfully
+          </span>
+
+          <!-- Heading -->
+          <h1
+            class="mt-5 text-3xl sm:text-4xl font-extrabold tracking-tight text-text"
+          >
+            Thank you for reaching out!
+          </h1>
+
+          <!-- Description -->
+          <p class="mt-4 text-sm sm:text-base leading-relaxed text-slate-400">
+            I've received your note and will review it promptly. Expect a reply
+            to your email within <span class="text-text font-medium"
+              >24 hours</span
+            >.
+          </p>
+
+          <!-- Divider -->
+          <div
+            class="my-8 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent"
+          >
+          </div>
+
+          <!-- Action buttons -->
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="/"
+              class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-secondary/25 transition-all hover:bg-secondary-light hover:shadow-xl hover:shadow-secondary/30 hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+              </svg>
+              <span>Back to Home</span>
+            </a>
+
+            <a
+              href="/#projects"
+              class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-border bg-surface/50 px-6 py-3 text-sm font-semibold text-text transition-all hover:border-primary/50 hover:bg-surface hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span>Explore Projects</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

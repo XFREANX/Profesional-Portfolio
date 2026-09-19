@@ -115,10 +115,27 @@
         >
           <form
             class="flex flex-col gap-5"
-            action="mailto:ferrerfranklin17@gmail.com"
+            action="https://api.web3forms.com/submit"
             method="POST"
-            enctype="text/plain"
           >
+            <input
+              type="hidden"
+              name="access_key"
+              value="4524cf7f-589e-4fdc-a142-82649120a132"
+            />
+            <input
+              type="hidden"
+              name="redirect"
+              id="redirect-url"
+              value=""
+            />
+            <input
+              type="checkbox"
+              name="botcheck"
+              class="hidden"
+              style="display: none;"
+            />
+
             <!-- Name Input -->
             <div class="flex flex-col gap-1.5">
               <label
@@ -200,4 +217,11 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const redirectInput = document.getElementById("redirect-url") as HTMLInputElement | null;
+    if (redirectInput) {
+      redirectInput.value = `${window.location.origin}/success`;
+    }
+  </script>
 </section>

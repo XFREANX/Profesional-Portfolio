@@ -64,10 +64,11 @@
           class="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start animate-slide-up"
           style="animation-delay: .3s"
         >
-          <!-- Download CV -->
+          <!-- View CV -->
           <a
-            href="/cv.pdf"
-            download
+            href="/Franklin_Ferrer_DEV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-flex items-center gap-2 rounded-xl bg-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-secondary/25 transition-all hover:bg-secondary-light hover:shadow-xl hover:shadow-secondary/30 hover:-translate-y-0.5 active:translate-y-0"
           >
             <svg
@@ -80,10 +81,10 @@
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3"
+                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
               ></path>
             </svg>
-            Download CV
+            View CV
           </a>
 
           <!-- Explore Projects -->
@@ -117,49 +118,14 @@
         <div
           class="relative rounded-3xl p-[3px] bg-gradient-to-br from-secondary via-primary to-tertiary shadow-2xl shadow-primary/20"
         >
-          <div
-            class="flex h-80 w-72 flex-col items-center justify-center gap-3 bg-surface p-6 sm:h-96 sm:w-80"
-          >
-            <div
-              class="flex h-24 w-24 items-center justify-center rounded-full bg-surface-light border border-border text-primary"
-            >
-              <svg
-                class="h-12 w-12 text-text-muted"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                ></path>
-              </svg>
-            </div>
-            <span class="font-mono text-xs text-text-muted">Foto de Perfil</span
-            >
-            <span class="text-xs text-text-muted/60 text-center"
-              >Coloca tu foto en <code class="text-primary-light"
-                >public/profile.jpg</code
-              ></span
-            >
+          <div class="overflow-hidden rounded-[21px] bg-surface">
+            <img
+              src="/linkedin foto.jpg"
+              alt="Franklin Ferrer - Full Stack Software Engineer"
+              class="h-80 w-72 object-cover sm:h-96 sm:w-80 transition-transform duration-500 hover:scale-105"
+              loading="eager"
+            />
           </div>
-        </div>
-
-        <!-- Sparkle icon -->
-        <div
-          class="absolute -bottom-3 -right-3 flex h-12 w-12 items-center justify-center rounded-xl bg-surface border border-border shadow-lg animate-float"
-        >
-          <svg
-            class="h-6 w-6 text-tertiary"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 0l2.39 7.61L22 10l-7.61 2.39L12 20l-2.39-7.61L2 10l7.61-2.39L12 0z"
-            ></path>
-          </svg>
         </div>
 
         <!-- Secondary floating badge -->
