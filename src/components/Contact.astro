@@ -98,7 +98,7 @@
 
           <!-- Availability status -->
           <div
-            class="inline-flex items-center gap-2 pt-1 font-mono text-[11px] text-slate-500"
+            class="inline-flex items-center gap-2 pt-1 font-mono text-[11px] text-slate-400"
           >
             <span
               class="inline-block h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse"
@@ -113,7 +113,7 @@
         <div
           class="rounded-2xl border border-border bg-surface/40 p-6 sm:p-8 backdrop-blur-sm"
         >
-          <form class="flex flex-col gap-5" action="/api/contact" method="POST">
+          <form id="contact-form" class="flex flex-col gap-5" action="/api/contact" method="POST">
             <!-- Error banner (shown when the API redirects back with ?contact=...) -->
             <p
               id="contact-error"
@@ -141,11 +141,12 @@
               <input
                 type="text"
                 id="name"
+                autocomplete="name"
                 name="name"
                 required
                 maxlength="100"
                 placeholder="John Doe"
-                class="w-full rounded-xl border border-border/80 bg-slate-900/50 px-4 py-2.5 text-sm text-text placeholder:text-slate-600 transition-colors focus:border-secondary focus:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-secondary/30"
+                class="w-full rounded-xl border border-border/80 bg-slate-900/50 px-4 py-2.5 text-sm text-text placeholder:text-slate-500 transition-colors focus:border-secondary focus:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-secondary/30"
               />
             </div>
 
@@ -160,11 +161,12 @@
               <input
                 type="email"
                 id="email"
+                autocomplete="email"
                 name="email"
                 required
                 maxlength="150"
                 placeholder="john@example.com"
-                class="w-full rounded-xl border border-border/80 bg-slate-900/50 px-4 py-2.5 text-sm text-text placeholder:text-slate-600 transition-colors focus:border-secondary focus:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-secondary/30"
+                class="w-full rounded-xl border border-border/80 bg-slate-900/50 px-4 py-2.5 text-sm text-text placeholder:text-slate-500 transition-colors focus:border-secondary focus:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-secondary/30"
               />
             </div>
 
@@ -183,7 +185,7 @@
                 required
                 maxlength="2500"
                 placeholder="Tell me about your project or role..."
-                class="w-full resize-y rounded-xl border border-border/80 bg-slate-900/50 px-4 py-2.5 text-sm text-text placeholder:text-slate-600 transition-colors focus:border-secondary focus:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-secondary/30"
+                class="w-full resize-y rounded-xl border border-border/80 bg-slate-900/50 px-4 py-2.5 text-sm text-text placeholder:text-slate-500 transition-colors focus:border-secondary focus:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-secondary/30"
               ></textarea>
             </div>
 
@@ -191,9 +193,9 @@
             <div class="pt-2">
               <button
                 type="submit"
-                class="inline-flex items-center gap-2 rounded-lg bg-secondary px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-secondary-light hover:shadow-lg hover:shadow-secondary/25 active:translate-y-0 cursor-pointer"
+                class="inline-flex disabled:cursor-not-allowed disabled:opacity-60 items-center gap-2 rounded-lg bg-secondary px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-secondary-light hover:shadow-lg hover:shadow-secondary/25 active:translate-y-0 cursor-pointer"
               >
-                <span>Send Message</span>
+                <span id="contact-submit-label">Send Message</span>
                 <svg
                   class="h-4 w-4"
                   fill="none"
@@ -222,6 +224,13 @@
     failed:
       "Your message could not be sent. Please try again or email me directly.",
   };
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  form?.addEventListener("submit", () => {
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const label = document.getElementById("contact-submit-label");
+    if (submit) submit.disabled = true;
+    if (label) label.textContent = "Sending…";
+  });
   const reason = new URLSearchParams(location.search).get("contact");
   const banner = document.getElementById("contact-error");
   if (banner && reason && messages[reason]) {
