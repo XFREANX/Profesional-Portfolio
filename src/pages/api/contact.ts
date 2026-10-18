@@ -2,7 +2,13 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const POST: APIRoute = async ({ request, redirect }) => {
+  // Errors send the visitor back to the form (Contact.astro shows the message)
+  const fail = (reason: "invalid" | "failed") =>
+    redirect(`/?contact=${reason}#contact`, 303);
+
   try {
     const formData = await request.formData();
     const name = formData.get("name")?.toString()?.trim();
@@ -15,18 +21,26 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       return redirect("/success", 303);
     }
 
-    // Validate inputs
-    if (!name || !email || !message) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
+    // Validate inputs (limits mirror the form's maxlength attributes)
+    if (
+      !name ||
+      !email ||
+      !message ||
+      name.length > 100 ||
+      email.length > 150 ||
+      message.length > 2500 ||
+      !EMAIL_RE.test(email)
+    ) {
+      return fail("invalid");
     }
 
     const accessKey =
-      import.meta.env.WEB3FORMS_ACCESS_KEY ||
-      process.env.WEB3FORMS_ACCESS_KEY ||
-      "4524cf7f-589e-4fdc-a142-82649120a132";
+      import.meta.env.WEB3FORMS_ACCESS_KEY || process.env.WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      console.error("WEB3FORMS_ACCESS_KEY is not configured");
+      return fail("failed");
+    }
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -48,19 +62,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
     if (result.success) {
       return redirect("/success", 303);
-    } else {
-      console.error("Web3Forms error:", result);
-      return new Response(
-        JSON.stringify({ error: result.message || "Failed to send message" }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
     }
+
+    console.error("Web3Forms error:", result);
+    return fail("failed");
   } catch (error) {
     console.error("Contact API error:", error);
-    return new Response(
-      JSON.stringify({ error: "An unexpected error occurred." }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    return fail("failed");
   }
 };
-

@@ -114,6 +114,14 @@
           class="rounded-2xl border border-border bg-surface/40 p-6 sm:p-8 backdrop-blur-sm"
         >
           <form class="flex flex-col gap-5" action="/api/contact" method="POST">
+            <!-- Error banner (shown when the API redirects back with ?contact=...) -->
+            <p
+              id="contact-error"
+              role="alert"
+              class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+            >
+            </p>
+
             <!-- Honeypot anti-spam field -->
             <input
               type="checkbox"
@@ -207,3 +215,17 @@
     </div>
   </div>
 </section>
+
+<script>
+  const messages: Record<string, string> = {
+    invalid: "Please check your name, email and message, then try again.",
+    failed:
+      "Your message could not be sent. Please try again or email me directly.",
+  };
+  const reason = new URLSearchParams(location.search).get("contact");
+  const banner = document.getElementById("contact-error");
+  if (banner && reason && messages[reason]) {
+    banner.textContent = messages[reason];
+    banner.classList.remove("hidden");
+  }
+</script>
