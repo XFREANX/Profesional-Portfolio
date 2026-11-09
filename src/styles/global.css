@@ -87,3 +87,21 @@ body {
   background: var(--color-surface-light);
   border-radius: 3px;
 }
+/* ── Anchor offset for the fixed header ── */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* ── Respect reduced-motion preferences ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
